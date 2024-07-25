@@ -1,0 +1,7 @@
+dpmodule.displayUsername:
+  path: '/dpmodule'
+  defaults:
+    _controller: '\Drupal\dpmodule\Controller\SimpleController::displayUsername'
+    _title: 'My First Custom Module.'
+  requirements:
+    _permission: 'access content'
