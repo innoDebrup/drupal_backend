@@ -1,0 +1,10 @@
+name: 'Test Module'
+type: module
+core_version_requirement: ^10
+description: 'Backend Training Test Module.'
+package: 'DP Modules'
+dependencies:
+  - drupal:media
+  - drupal:responsive_image
+  - smtp:smtp
+  - admin_toolbar:admin_toolbar_links_access_filter
