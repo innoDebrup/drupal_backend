@@ -1,0 +1,7 @@
+name: 'Counter'
+type: module
+core_version_requirement: ^10
+description: 'Counts how many times a node is viewed in a session.'
+package: 'DP Modules'
+dependencies:
+  - drupal:node
