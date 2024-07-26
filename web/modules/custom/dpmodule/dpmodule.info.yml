@@ -1,0 +1,5 @@
+name: 'My First Custom Drupal Module'
+type: module
+core_version_requirement: ^10
+description: 'Backend Training First Module.'
+package: 'DP Modules'
