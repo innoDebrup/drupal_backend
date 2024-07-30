@@ -1,5 +1,0 @@
-name: 'DP Form Module'
-type: module
-core_version_requirement: ^10
-description: 'DP Form Test Module.'
-package: 'DP Form Modules'

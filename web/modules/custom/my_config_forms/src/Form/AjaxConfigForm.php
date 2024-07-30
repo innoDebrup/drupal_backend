@@ -1,23 +1,30 @@
 <?php
 
-namespace Drupal\first_form\Form;
+declare(strict_types=1);
+
+namespace Drupal\my_config_forms\Form;
 
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
-use Drupal\Core\Ajax\ReplaceCommand;
-use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-
 /**
- * Implements an example form.
+ * Configure My Config Forms settings for this site.
  */
-class AjaxForm extends FormBase {
+final class AjaxConfigForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
-    return 'ajax_form';
+  public function getFormId(): string {
+    return 'my_config_forms_ajax_config';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getEditableConfigNames() {
+    return ['my_config_forms_ajax.settings'];
   }
 
   /**
@@ -67,8 +74,8 @@ class AjaxForm extends FormBase {
       '#value' => $this->t('Submit'),
       '#button_type' => 'primary',
     ];
-    $form['#attached']['library'][] = 'first_form/first_form_css';
-    return $form;
+    $form['#attached']['library'][] = 'my_config_forms/my_config_forms_css';
+    return parent::buildForm($form, $form_state);
   }
 
   /**
@@ -90,18 +97,7 @@ class AjaxForm extends FormBase {
     if (!preg_match('/^[a-zA-Z]+[ ]{0,1}[a-zA-Z]*$/', $form_state->getValue('name'))) {
       $form_state->setErrorByName('name', $this->t('Not a valid name format!'));
     }
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->messenger()->addStatus($this->t('Your name => @name<br> Phone Number => @number<br> Email => @email<br> Your Gender => @gender<br>', 
-    [ '@name' => $form_state->getValue('name'),
-      '@number' => $form_state->getValue('phone_number'),
-      '@email' => $form_state->getValue('email'),
-      '@gender' => $form_state->getValue('gender'),
-    ]));
+    parent::validateForm($form, $form_state);
   }
 
   public function validateNameAjax(array &$form, FormStateInterface $form_state) {
@@ -113,6 +109,7 @@ class AjaxForm extends FormBase {
     $response->addCommand(new HtmlCommand('#name-err', $result));
     return $response;
   }
+
   public function validatePhoneAjax(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
     if (!preg_match('/^\d{10}$/',strval($form_state->getValue('phone_number')))) {
@@ -123,6 +120,7 @@ class AjaxForm extends FormBase {
     }
     return $response;
   }
+
   public function validateEmailAjax(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
     $allowed_domains = ['yahoo.com', 'gmail.com', 'outlook.com', 'innoraft.com'];
@@ -138,4 +136,18 @@ class AjaxForm extends FormBase {
     $response->addCommand(new HtmlCommand('#email-err', $result));
     return $response;
   }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function submitForm(array &$form, FormStateInterface $form_state) {
+    $this->config('my_config_forms_ajax.settings')
+      ->set('name', $form_state->getValue('name'))
+      ->set('phone_number', $form_state->getValue('phone_number'))
+      ->set('email', $form_state->getValue('email'))
+      ->set('gender', $form_state->getValue('gender'))
+      ->save();
+    parent::submitForm($form, $form_state);
+  }
+
 }

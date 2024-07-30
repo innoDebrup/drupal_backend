@@ -1,20 +1,29 @@
 <?php
 
-namespace Drupal\first_form\Form;
+declare(strict_types=1);
 
-use Drupal\Core\Form\FormBase;
+namespace Drupal\my_config_forms\Form;
+
+use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
- * Implements an example form.
+ * Configure My Config Forms settings for this site.
  */
-class FirstForm extends FormBase {
+final class SimpleConfigForm extends ConfigFormBase {
 
   /**
    * {@inheritdoc}
    */
-  public function getFormId() {
-    return 'first_form';
+  public function getFormId(): string {
+    return 'my_config_forms_simple_config';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function getEditableConfigNames(): array {
+    return ['my_config_forms.settings'];
   }
 
   /**
@@ -47,7 +56,7 @@ class FirstForm extends FormBase {
       '#value' => $this->t('Submit'),
       '#button_type' => 'primary', 
     ];
-    return $form;
+    return parent::buildForm($form, $form_state);
   }
 
   /**
@@ -69,6 +78,7 @@ class FirstForm extends FormBase {
     if (!preg_match('/^[a-zA-Z]*[ ]{0,1}[a-zA-Z]*$/', $form_state->getValue('name'))) {
       $form_state->setErrorByName('name', $this->t('Not a valid name format!'));
     }
+    parent::validateForm($form, $form_state);
   }
 
   /**
@@ -81,6 +91,13 @@ class FirstForm extends FormBase {
       '@email' => $form_state->getValue('email'),
       '@gender' => $form_state->getValue('gender'),
     ]));
+    $this->config('my_config_forms.settings')
+      ->set('name', $form_state->getValue('name'))
+      ->set('phone_number', $form_state->getValue('phone_number'))
+      ->set('email', $form_state->getValue('email'))
+      ->set('gender', $form_state->getValue('gender'))
+      ->save();
+    parent::submitForm($form, $form_state);
   }
 
 }

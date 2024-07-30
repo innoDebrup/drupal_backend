@@ -1,0 +1,5 @@
+my_config_forms_css:
+  version: 1.0
+  css:
+    theme:
+      css/my_config_forms.css: {}

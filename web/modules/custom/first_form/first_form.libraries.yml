@@ -1,5 +1,0 @@
-first_form_css:
-  version: 1.0
-  css:
-    theme:
-      css/first_form.css: {}
