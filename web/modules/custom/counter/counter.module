@@ -8,6 +8,19 @@ use Drupal\Core\Cache\Cache;
 use Drupal\node\NodeInterface;
 
 /**
+ * Implementation of the custom hook.
+ *
+ * @param int $count
+ *   The current view count of the node.
+ * 
+ * @return void
+ */
+function counter_display_count(int $count) {
+  $messenger = \Drupal::messenger();
+  $messenger->addStatus(t('This node has been viewed @count times in this session.', ['@count' => $count]));
+}
+
+/**
  * Hook function which alters functionality of hook_ENTITY_TYPE_view() function.
  *
  * @param array $build
@@ -39,6 +52,7 @@ function counter_node_view(array &$build, NodeInterface $node, $view_mode) {
   // After session variable increment, Invalidate the tag to show updated value.
   Cache::invalidateTags(['node:'.$nid]);
   // Show the count in status message.
-  $messenger = \Drupal::messenger();
-  $messenger->addStatus(t('This node has been viewed @count times in this session.', ['@count' => $count]));
+  // Invoking the custom hook.
+  $module_handler = \Drupal::moduleHandler();
+  $module_handler->invokeAll('display_count', [$count]);
 }
