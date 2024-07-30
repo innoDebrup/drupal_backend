@@ -100,6 +100,16 @@ final class AjaxConfigForm extends ConfigFormBase {
     parent::validateForm($form, $form_state);
   }
 
+  /**
+   * AJAX Function to validate name.
+   *
+   * @param array $form
+   *   An associative array containing the structure of the form.
+   * @param FormStateInterface $form_state
+   *   The current state of the form.
+   * 
+   * @return void
+   */
   public function validateNameAjax(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
     $result = '';
@@ -110,6 +120,16 @@ final class AjaxConfigForm extends ConfigFormBase {
     return $response;
   }
 
+    /**
+   * AJAX Function to validate phone_number.
+   *
+   * @param array $form
+   *   An associative array containing the structure of the form.
+   * @param FormStateInterface $form_state
+   *   The current state of the form.
+   * 
+   * @return void
+   */
   public function validatePhoneAjax(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
     if (!preg_match('/^\d{10}$/',strval($form_state->getValue('phone_number')))) {
@@ -121,6 +141,16 @@ final class AjaxConfigForm extends ConfigFormBase {
     return $response;
   }
 
+    /**
+   * AJAX Function to validate email.
+   *
+   * @param array $form
+   *   An associative array containing the structure of the form.
+   * @param FormStateInterface $form_state
+   *   The current state of the form.
+   * 
+   * @return void
+   */
   public function validateEmailAjax(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
     $allowed_domains = ['yahoo.com', 'gmail.com', 'outlook.com', 'innoraft.com'];

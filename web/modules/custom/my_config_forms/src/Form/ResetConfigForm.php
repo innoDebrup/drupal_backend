@@ -61,7 +61,7 @@ final class ResetConfigForm extends ConfigFormBase {
     $message = '';
     if ($userId && $user) {
       $otll = user_pass_reset_url($user);
-      $message = $this->t('One-time login link: <a href="@link">Reset Password Link Generated! Click Here!</a>', ['@link' => $otll]);
+      $message = $this->t('Your One-time login link: <a href="@link">Reset Password Link Generated! Click Here!</a>', ['@link' => $otll]);
     }
     else {
       $message = $this->t('<div class="error">Invalid user ID.</div>');
@@ -74,7 +74,7 @@ final class ResetConfigForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $message = $this->generateOtl($form, $form_state);
-    $this->messenger()->addStatus($this->t('Your One-Time Login Link is : @message', ['@message' => $message]));
+    $this->messenger()->addStatus($this->t('@message', ['@message' => $message]));
     parent::submitForm($form, $form_state);
   }
 
