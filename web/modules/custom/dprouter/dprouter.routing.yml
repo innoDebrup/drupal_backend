@@ -12,4 +12,3 @@ dprouter.displayCustom:
     _title: 'My Dynamic Router Test Module.'
   requirements:
     _permission: 'access the custom page'
-  
