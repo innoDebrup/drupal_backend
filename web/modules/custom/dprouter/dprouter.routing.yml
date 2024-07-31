@@ -1,0 +1,14 @@
+dprouter.displayUsername:
+  path: '/dprouter'
+  defaults:
+    _controller: '\Drupal\dprouter\Controller\SimpleController::displayUsername'
+    _title: 'My Router Test Module.'
+  requirements:
+    _roles: 'administrator+content_editor'
+dprouter.displayCustom:
+  path: '/dprouter/{id}'
+  defaults:
+    _controller: '\Drupal\dprouter\Controller\SimpleController::displayCustom'
+    _title: 'My Dynamic Router Test Module.'
+  requirements:
+    _permission: 'access the custom page'
