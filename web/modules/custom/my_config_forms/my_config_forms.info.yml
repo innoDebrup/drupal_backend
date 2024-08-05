@@ -1,0 +1,5 @@
+name: 'My Config Forms'
+type: module
+description: 'A set of config forms made by me!'
+package: 'DP Modules'
+core_version_requirement: ^10

@@ -1,0 +1,23 @@
+my_config_forms.simple_config:
+  path: '/admin/config/system/simple-config'
+  defaults:
+    _title: 'Simple config'
+    _form: 'Drupal\my_config_forms\Form\SimpleConfigForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+my_config_forms.ajax_config:
+  path: '/admin/config/system/ajax-config'
+  defaults:
+    _title: 'Ajax Config Form'
+    _form: 'Drupal\my_config_forms\Form\AjaxConfigForm'
+  requirements:
+    _permission: 'administer site configuration'
+
+my_config_forms.reset_config:
+  path: '/admin/config/system/reset-config'
+  defaults:
+    _title: 'Reset Config Form'
+    _form: 'Drupal\my_config_forms\Form\ResetConfigForm'
+  requirements:
+    _permission: 'administer site configuration'

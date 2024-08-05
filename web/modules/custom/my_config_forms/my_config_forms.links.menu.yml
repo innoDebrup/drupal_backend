@@ -1,0 +1,20 @@
+my_config_forms.simple_config:
+  title: Simple Config Form
+  description: My first config form.
+  parent: system.admin_config_system
+  route_name: my_config_forms.simple_config
+  weight: 10
+
+my_config_forms.ajax_config:
+  title: Ajax Config Form
+  description: My custom config form which has AJAX functionalities.
+  parent: system.admin_config_system
+  route_name: my_config_forms.ajax_config
+  weight: 10
+
+my_config_forms.reset_config:
+  title: Reset Config Form
+  description: My config form to reset user password.
+  parent: system.admin_config_system
+  route_name: my_config_forms.reset_config
+  weight: 10
