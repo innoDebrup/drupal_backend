@@ -1,0 +1,8 @@
+name: 'Stat Form'
+type: module
+description: 'A module to add a dynamic form to add statistics regarding the company.'
+package: DP Modules
+core_version_requirement: ^10
+dependencies:
+  - drupal:field
+  - drupal:block

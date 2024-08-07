@@ -101,3 +101,5 @@
 /web/sites/default/robots-copy.txt
 /web/sites/default/settings.php
 /web/sites/development.services.yml
+/.vscode
+/.lando

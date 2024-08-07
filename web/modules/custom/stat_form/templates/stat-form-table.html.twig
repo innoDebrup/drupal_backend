@@ -1,0 +1,34 @@
+<div class="stat-div">
+  <h2>Flagship Programmes</h2>
+  <table>
+    <thead>
+      <tr>
+        {% for row in rows %}
+          <th>{{ row.name }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for row in rows %}
+          <td>{{ row.label_1 }}</td>
+        {% endfor %}
+      </tr>
+      <tr class="stat">
+        {% for row in rows %}
+          <td>{{ row.stat_1 }}</td>
+        {% endfor %}
+      </tr>
+      <tr>
+        {% for row in rows %}
+          <td>{{ row.label_2 }}</td>
+        {% endfor %}
+      </tr>
+      <tr class="stat">
+        {% for row in rows %}
+          <td>{{ row.stat_2 }}</td>
+        {% endfor %}
+      </tr>
+    </tbody>
+</table>
+</div>

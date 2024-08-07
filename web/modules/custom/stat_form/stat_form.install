@@ -1,0 +1,63 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Stat Form module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function stat_form_install(): void {
+  \Drupal::messenger()->addStatus(t('Module Stat Form has been installed.'));
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function stat_form_uninstall(): void {
+  \Drupal::messenger()->addStatus(t('Module Stat Form has been uninstalled.'));
+}
+
+/**
+ * Implements hook_schema().
+ */
+function stat_form_schema() {
+  $schema['stat_form_data'] = [
+    'description' => 'Table to store dynamic form data',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+      ],
+      'name' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'label_1' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'stat_1' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      'label_2' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      'stat_2' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}

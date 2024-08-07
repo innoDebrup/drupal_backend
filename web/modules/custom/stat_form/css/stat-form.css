@@ -1,0 +1,26 @@
+table {
+  text-align: center;
+  width: 100%;
+  padding: 10px 5px 50px 5px;
+}
+td {
+  padding: 10px 50px;
+}
+thead {
+  font-size: 25px;
+}
+.stat-div {
+  background: url("../images/bg.jpg") no-repeat fixed center;
+  color: whitesmoke;
+  h2 {
+    color: whitesmoke;
+    text-align: center;
+    width: 100%;
+    padding-top: 20px;
+  }
+}
+.stat {
+  color: orange;
+  font-size: 40px;
+  font-weight: bolder;
+}

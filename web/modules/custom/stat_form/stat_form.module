@@ -1,0 +1,11 @@
+<?php
+/**
+ * Implements hook_theme().
+ */
+function stat_form_theme() {
+  return [
+    'stat_form_table' => [
+      'variables' => ['rows' => []],
+    ],
+  ];
+}

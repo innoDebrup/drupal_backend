@@ -1,0 +1,7 @@
+stat_form.form:
+  path: '/stat-form'
+  defaults:
+    _form: '\Drupal\stat_form\Form\StatForm'
+    _title: 'Statistics Form'
+  requirements:
+    _permission: 'access content'

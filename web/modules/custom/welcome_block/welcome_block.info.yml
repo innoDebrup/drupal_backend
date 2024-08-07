@@ -1,0 +1,5 @@
+name: 'Welcome Block'
+type: module
+description: 'Displays a welcome message with the user role and redirects after login.'
+core_version_requirement: ^10
+package: DP Modules
