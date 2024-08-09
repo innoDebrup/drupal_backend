@@ -8,6 +8,8 @@ services:
   appserver:
     webroot: web
     xdebug: debug
+    config:
+      php: .lando/php.ini
   database:
     type: mysql
 tooling:

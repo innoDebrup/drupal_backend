@@ -1,0 +1,4 @@
+stat-form-css:
+  css:
+    theme: 
+      css/stat-form.css: {}
